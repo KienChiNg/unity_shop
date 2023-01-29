@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 1b79672d91d2eed499b60c60fe8fad25
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Gotham
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 8a8f3c3ee85fa4f4ebd4434d57562ec3, type: 3}
+  - {fileID: 12800000, guid: 08461062164af4544b5cc8ca6737b91b, type: 3}
+  - {fileID: 12800000, guid: 955fdc2c73f408046b90fe59049eb11a, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
