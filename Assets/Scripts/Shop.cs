@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Shop : MonoBehaviour
+public class Shop : Singleton<Shop>
 {
-    [SerializeField] List<ShopItem> listItem;
+    public List<ShopItem> listItem;
     GameObject ItemTemplate;
     GameObject item;
     [SerializeField] Transform ShopScrollView;
+    [SerializeField] GameObject ShopPanel;
     [SerializeField] Animator NoCoin;
-    [SerializeField] Text Coins;
+    // [SerializeField] Text Coins;
     Button btnBuy;
     void Start()
     {
-        setCoinsUI(Game.Ins.coins.ToString());
+        // setCoinsUI(Game.Ins.coins.ToString());
         ItemTemplate = ShopScrollView.GetChild(0).gameObject;
         int len = listItem.Count;
         for (int i = 0; i < len; i++)
@@ -44,13 +45,30 @@ public class Shop : MonoBehaviour
             btnBuy = ShopScrollView.GetChild(itemIndex).GetChild(2).GetComponent<Button>();
             btnBuy.interactable = false;
             btnBuy.transform.GetChild(0).GetComponent<Text>().text = "PURCHASED";
-            setCoinsUI(Game.Ins.coins.ToString());
-        }else {
+            Game.Ins.UpdateAllCoinsUIText();
+            Profile1.Ins.AddAvatar(listItem[itemIndex].iconItem,itemIndex);
+        }
+        else
+        {
             NoCoin.SetTrigger("Nocoin");
         }
     }
-    void setCoinsUI(string txt){
-        Coins.text = txt;
+    // void setCoinsUI(string txt){
+    //     Coins.text = txt;
+    // }
+    
+    public void OpenShop()
+    {
+        StartCoroutine(DelayAnimation());
+    }
+    IEnumerator DelayAnimation(){
+        Profile1.Ins.AnimBtnShop.SetTrigger("OnClick");
+        yield return new WaitForSeconds(0.7f);
+        ShopPanel.SetActive(true);
+    }
+    public void CloseShop()
+    {
+        ShopPanel.SetActive(false);
     }
 }
 
