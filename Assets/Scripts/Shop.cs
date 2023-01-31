@@ -46,7 +46,7 @@ public class Shop : Singleton<Shop>
             btnBuy.interactable = false;
             btnBuy.transform.GetChild(0).GetComponent<Text>().text = "PURCHASED";
             Game.Ins.UpdateAllCoinsUIText();
-            Profile1.Ins.AddAvatar(listItem[itemIndex].iconItem,itemIndex);
+            Profile1.Ins.AddAvatar(listItem[itemIndex].iconItem);
         }
         else
         {

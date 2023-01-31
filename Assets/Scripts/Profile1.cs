@@ -9,6 +9,10 @@ public class Profile1 : Singleton<Profile1>
     [SerializeField] Transform AvatarScrollView;
     [SerializeField] GameObject AvatarUITemplate;
     [SerializeField] Transform AnimIconUI;
+    [SerializeField] Color DefaultColorUI;
+    [SerializeField] Color ChoosedColorUI;
+    [SerializeField] Color WhiteColorUI;
+    private int CurIndex = 0;
     public Animator AnimBtnShop;
     GameObject ItemTemplate;
 
@@ -19,19 +23,21 @@ public class Profile1 : Singleton<Profile1>
         {
             GameObject g = Instantiate(AvatarUITemplate, AvatarScrollView);
             g.transform.GetChild(0).GetComponent<Image>().sprite = listItem[i].item;
-            g.transform.GetComponent<Button>().AddEventListener(listItem.Count-1,OnAvatarClick);
+            g.transform.GetComponent<Image>().color = ChoosedColorUI;
+            g.transform.GetComponent<Button>().AddEventListener(i,OnAvatarClick);
         }
+        // AvatarUITemplate.transform.GetChild(0).GetComponent<Image>().color = ChoosedColorUI;
         // ItemTemplate = AvatarScrollView.GetChild(0).gameObject;
         for (int i = 0; i < Shop.Ins.listItem.Count; i++)
         {
             if (Shop.Ins.listItem[i].isPurchased)
             {
-                AddAvatar(Shop.Ins.listItem[i].iconItem,i);
+                AddAvatar(Shop.Ins.listItem[i].iconItem);
             }
         }
         // Destroy(AnimIconUI.GetChild(0).GetComponent<Image>());
     }
-    public void AddAvatar(Sprite img,int itemIndex)
+    public void AddAvatar(Sprite img)
     {
         // Debug.Log(itemIndex);
         if (listItem == null)
@@ -47,6 +53,11 @@ public class Profile1 : Singleton<Profile1>
     void OnAvatarClick(int ind){
         // Debug.Log(ind);
         AnimIconUI.GetChild(0).GetComponent<Image>().sprite = listItem[ind].item;
+        AvatarScrollView.GetChild(ind).GetComponent<Image>().color = ChoosedColorUI;
+        AvatarScrollView.GetChild(CurIndex).GetComponent<Image>().color = DefaultColorUI;
+        // AvatarScrollView.GetChild(ind).GetChild(0).GetComponent<Image>().color = WhiteColorUI;
+        // AvatarScrollView.GetChild(CurIndex).GetChild(0).GetComponent<Image>().color = WhiteColorUI;
+        CurIndex = ind;
     }
 }
 

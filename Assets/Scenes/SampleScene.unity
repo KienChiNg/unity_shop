@@ -270,6 +270,9 @@ MonoBehaviour:
   AvatarScrollView: {fileID: 1680290218}
   AvatarUITemplate: {fileID: 8638308990720203372, guid: 53cfc6c5c3adc254885e2164c94b135e, type: 3}
   AnimIconUI: {fileID: 908562138}
+  DefaultColorUI: {r: 0.3019608, g: 0.043137256, b: 0.26666668, a: 0}
+  ChoosedColorUI: {r: 0.4528302, g: 0.03203987, b: 0.39544955, a: 1}
+  WhiteColorUI: {r: 1, g: 1, b: 1, a: 0}
   AnimBtnShop: {fileID: 351054385}
 --- !u!1 &252809837
 GameObject:
@@ -620,7 +623,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.20300001, y: 0.3}
   m_AnchorMax: {x: 0.8015277, y: 0.5}
-  m_AnchoredPosition: {x: -0.89082336, y: 0.91000366}
+  m_AnchoredPosition: {x: -0.8908081, y: 0.91000366}
   m_SizeDelta: {x: 157.93, y: 0.76}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &417611111
